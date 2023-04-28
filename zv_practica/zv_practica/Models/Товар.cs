@@ -1,29 +1,31 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace zv_practica.Models;
-
-public partial class Товар
+namespace zv_practica.Models
 {
-    public int ProductId { get; set; }
 
-    public double? ProductPrice { get; set; }
+    public partial class Товар
+    {
+        public int ProductId { get; set; }
 
-    public double? ProductWeight { get; set; }
+        public double? ProductPrice { get; set; }
 
-    public double? ProductLenght { get; set; }
+        public double? ProductWeight { get; set; }
 
-    public double? ProductWidth { get; set; }
+        public double? ProductLenght { get; set; }
 
-    public string? Comment { get; set; }
+        public double? ProductWidth { get; set; }
 
-    public bool IsDeleted { get; set; }
+        public string? Comment { get; set; }
 
-    public int? SumProduct { get; set; }
+        public bool IsDeleted { get; set; }
 
-    public virtual Категории Product { get; set; } = null!;
+        public int? SumProduct { get; set; }
 
-    public virtual ICollection<ЗаказТовара> ЗаказТовараs { get; } = new List<ЗаказТовара>();
+        public virtual Категории Product { get; set; } = null!;
 
-    public virtual ICollection<ОценкаТовара> ОценкаТовараs { get; } = new List<ОценкаТовара>();
+        public virtual ICollection<ЗаказТовара> ЗаказТовараs { get; } = new List<ЗаказТовара>();
+
+        public virtual ICollection<ОценкаТовара> ОценкаТовараs { get; } = new List<ОценкаТовара>();
+    }
 }
