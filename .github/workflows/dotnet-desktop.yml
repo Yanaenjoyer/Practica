@@ -2,7 +2,7 @@ name: .NET Core Desktop
 
 on:
   push:
-    branches: "mainr"
+    branches: "main"
   pull_request:
     branches: "main"
 
