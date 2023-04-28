@@ -1,0 +1,26 @@
+name: .NET Core Desktop
+
+on:
+  push:
+    branches: "master"
+  pull_request:
+    branches: "master"
+
+jobs:
+
+  build:
+
+    strategy:
+      matrix:
+        configuration: [Release]
+
+    runs-on: windows-latest
+
+    env:
+      Solution_Name: zv_practica.sln
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
