@@ -4,6 +4,75 @@
         <name>zv_practica</name>
     </assembly>
     <members>
+        <member name="M:zv_practica.Controllers.AdressController.Add(zv_practica.Contracts.CreateUserRequest)">
+             <summary>
+             Создание нового пользователя
+             </summary>
+             <remarks>
+             Пример запроса:
+            
+             POST /Todo
+             {
+             "Login" : "A4Tech Bloody B188",
+             "password" : "!Pa$$word123@",
+             "Surname" : "Иванов",
+             "Name" : "Иван",
+             "Lastname" : "Иванович"
+             "Birthday":"2000-01-01"
+             "IsDeleted":"True"
+             "IsAdmin":"False"
+             }
+            
+             </remarks>
+             <param name="model">Пользователь</param>
+             <returns></returns>
+        </member>
+        <member name="M:zv_practica.Controllers.AdressController.Update(zv_practica.Contracts.GetUSerResponse)">
+             <summary>
+             Изменение нового пользователя
+             </summary>
+             <remarks>
+             Пример запроса:
+            
+             POST /Todo
+             {
+             "Login" : "A4Tech Bloody B188",
+             "password" : "!Pa$$word123@",
+             "Surname" : "Иванов",
+             "Name" : "Иван",
+             "Lastname" : "Иванович"
+             "Birthday":"2000-01-01"
+             "IsDeleted":"True"
+             "IsAdmin":"False"
+             }
+            
+             </remarks>
+             <param name="model">Пользователь</param>
+             <returns></returns>
+        </member>
+        <member name="M:zv_practica.Controllers.AdressController.Delete(System.String)">
+             <summary>
+             Удаление пользователя
+             </summary>
+             <remarks>
+             Пример запроса:
+            
+             POST /Todo
+             {
+             "Login" : "A4Tech Bloody B188",
+             "password" : "!Pa$$word123@",
+             "Surname" : "Иванов",
+             "Name" : "Иван",
+             "Lastname" : "Иванович"
+             "Birthday":"2000-01-01"
+             "IsDeleted":"True"
+             "IsAdmin":"False"
+             }
+            
+             </remarks>
+             <param name="model">Пользователь</param>
+             <returns></returns>
+        </member>
         <member name="M:zv_practica.Controllers.OrderController.Add(zv_practica.Contracts.CreateOrderRequest)">
              <summary>
              Создание нового закааз
@@ -53,6 +122,144 @@
         <member name="M:zv_practica.Controllers.OrderController.Delete(System.String)">
              <summary>
              Удаление  Заказа
+             </summary>
+             <remarks>
+             Пример запроса:
+            
+             POST /Todo
+             {
+             "Login" : "A4Tech Bloody B188",
+             "password" : "!Pa$$word123@",
+             "Surname" : "Иванов",
+             "Name" : "Иван",
+             "Lastname" : "Иванович"
+             "Birthday":"2000-01-01"
+             "IsDeleted":"True"
+             "IsAdmin":"False"
+             }
+            
+             </remarks>
+             <param name="model">Пользователь</param>
+             <returns></returns>
+        </member>
+        <member name="M:zv_practica.Controllers.OrderProductController.Add(zv_practica.Contracts.CreateUserRequest)">
+             <summary>
+             Создание нового пользователя
+             </summary>
+             <remarks>
+             Пример запроса:
+            
+             POST /Todo
+             {
+             "Login" : "A4Tech Bloody B188",
+             "password" : "!Pa$$word123@",
+             "Surname" : "Иванов",
+             "Name" : "Иван",
+             "Lastname" : "Иванович"
+             "Birthday":"2000-01-01"
+             "IsDeleted":"True"
+             "IsAdmin":"False"
+             }
+            
+             </remarks>
+             <param name="model">Пользователь</param>
+             <returns></returns>
+        </member>
+        <member name="M:zv_practica.Controllers.OrderProductController.Update(zv_practica.Contracts.GetUSerResponse)">
+             <summary>
+             Изменение нового пользователя
+             </summary>
+             <remarks>
+             Пример запроса:
+            
+             POST /Todo
+             {
+             "Login" : "A4Tech Bloody B188",
+             "password" : "!Pa$$word123@",
+             "Surname" : "Иванов",
+             "Name" : "Иван",
+             "Lastname" : "Иванович"
+             "Birthday":"2000-01-01"
+             "IsDeleted":"True"
+             "IsAdmin":"False"
+             }
+            
+             </remarks>
+             <param name="model">Пользователь</param>
+             <returns></returns>
+        </member>
+        <member name="M:zv_practica.Controllers.OrderProductController.Delete(System.Int32)">
+             <summary>
+             Удаление пользователя
+             </summary>
+             <remarks>
+             Пример запроса:
+            
+             POST /Todo
+             {
+             "Login" : "A4Tech Bloody B188",
+             "password" : "!Pa$$word123@",
+             "Surname" : "Иванов",
+             "Name" : "Иван",
+             "Lastname" : "Иванович"
+             "Birthday":"2000-01-01"
+             "IsDeleted":"True"
+             "IsAdmin":"False"
+             }
+            
+             </remarks>
+             <param name="model">Пользователь</param>
+             <returns></returns>
+        </member>
+        <member name="M:zv_practica.Controllers.ProductController.Add(zv_practica.Contracts.CreateUserRequest)">
+             <summary>
+             Создание нового пользователя
+             </summary>
+             <remarks>
+             Пример запроса:
+            
+             POST /Todo
+             {
+             "Login" : "A4Tech Bloody B188",
+             "password" : "!Pa$$word123@",
+             "Surname" : "Иванов",
+             "Name" : "Иван",
+             "Lastname" : "Иванович"
+             "Birthday":"2000-01-01"
+             "IsDeleted":"True"
+             "IsAdmin":"False"
+             }
+            
+             </remarks>
+             <param name="model">Пользователь</param>
+             <returns></returns>
+        </member>
+        <member name="M:zv_practica.Controllers.ProductController.Update(zv_practica.Contracts.GetUSerResponse)">
+             <summary>
+             Изменение нового пользователя
+             </summary>
+             <remarks>
+             Пример запроса:
+            
+             POST /Todo
+             {
+             "Login" : "A4Tech Bloody B188",
+             "password" : "!Pa$$word123@",
+             "Surname" : "Иванов",
+             "Name" : "Иван",
+             "Lastname" : "Иванович"
+             "Birthday":"2000-01-01"
+             "IsDeleted":"True"
+             "IsAdmin":"False"
+             }
+            
+             </remarks>
+             <param name="model">Пользователь</param>
+             <returns></returns>
+        </member>
+        <member name="M:zv_practica.Controllers.ProductController.Delete(System.Int32)">
+             <summary>
+             Удаление пользователя
              </summary>
              <remarks>
              Пример запроса:

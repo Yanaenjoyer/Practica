@@ -21,6 +21,16 @@ namespace zv_practica
             builder.Services.AddScoped<IRepositoryWrapperOrder, RepositoryWrapperOrder>();
             builder.Services.AddScoped<IOrderService, OrderService>();
 
+            builder.Services.AddScoped<IRepositoryWrapperProduct, RepositoryWrapperProduct>();
+            builder.Services.AddScoped<IProductService, ProductService>();
+
+
+            builder.Services.AddScoped<IRepositoryWrapperAdress, RepositoryWrapperAdress>();
+            builder.Services.AddScoped<IAdressService, AdressService>();
+
+            builder.Services.AddScoped<IRepositoryWrapperOrderProduct, RepositoryWrapperOrderProduct>();
+            builder.Services.AddScoped<IOrderProductService, OrderProductService>();
+
 
 
             // Add services to the container.

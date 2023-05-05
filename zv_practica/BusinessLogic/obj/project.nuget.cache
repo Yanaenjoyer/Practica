@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "tkhA6zMrbBXyqINd1IL/xBxNDr8iwoWK1jzIDD78+gFRiqkk2iwAMwzxxLVOLiOGdyx+mXg0Z4n/KgA1aikqmQ==",
+  "dgSpecHash": "TrLR46hn6izww760VI/rzi0VKAGY+71mB2uqrAcfOYHesGdxUANyvj9FHiTJOGOdobeITPxVWMKRdxLavHUv4Q==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Максим\\Desktop\\zv_practica\\BusinessLogic\\BusinessLogic.csproj",
+  "projectFilePath": "C:\\Users\\Максим\\Desktop\\Task-3-4-5\\zv_practica\\BusinessLogic\\BusinessLogic.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Максим\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\Максим\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",

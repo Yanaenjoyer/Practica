@@ -7,11 +7,13 @@ using Domain.Interfaces;
 using Domain.Models;
 using Domain;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Identity.Client;
 
 namespace BusinessLogic.Services
 {
     public class UserService : IUserService
     {
+
 
 
         private IRepositoryWrapper _repositoryWrapper;
@@ -32,8 +34,12 @@ public async Task<Пользователи> GetById(string id)
         }
         public async Task Create(Пользователи model)
         {
+            if(model == null)
+            {
+                throw new ArgumentNullException(nameof(model));
+            }
             await _repositoryWrapper.Пользователи.Create(model);
-            _repositoryWrapper.Save();
+            await _repositoryWrapper.Save();
         }
         public async Task Update(Пользователи model)
         {

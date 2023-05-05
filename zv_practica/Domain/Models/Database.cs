@@ -69,9 +69,9 @@ namespace Domain.Models
         // Reverse navigation
 
         /// <summary>
-        /// Child Заказтовара where [Заказ_товара].[Order_number] point to this entity (FK_Заказ_товара_Заказ)
+        /// Child ЗаказТовара where [Заказ_товара].[Order_number] point to this entity (FK_Заказ_товара_Заказ)
         /// </summary>
-        public ICollection<Заказтовара> Заказтовара { get; set; } // Заказ_товара.FK_Заказ_товара_Заказ
+        public ICollection<ЗаказТовара> ЗаказТовара { get; set; } // Заказ_товара.FK_Заказ_товара_Заказ
 
         // Foreign keys
 
@@ -82,12 +82,12 @@ namespace Domain.Models
 
         public Заказ()
         {
-            Заказтовара = new List<Заказтовара>();
+            ЗаказТовара = new List<ЗаказТовара>();
         }
     }
 
     // Заказ_товара
-    public class Заказтовара
+    public class ЗаказТовара
     {
         public int OrderNumber { get; set; } // Order_number (Primary key)
         public int ProductId { get; set; } // Product_ID (Primary key)
@@ -196,9 +196,9 @@ namespace Domain.Models
         // Reverse navigation
 
         /// <summary>
-        /// Child Заказтовара where [Заказ_товара].[Product_ID] point to this entity (FK_Заказ_товара_Товар)
+        /// Child ЗаказТовара where [Заказ_товара].[Product_ID] point to this entity (FK_Заказ_товара_Товар)
         /// </summary>
-        public ICollection<Заказтовара> Заказтовара { get; set; } // Заказ_товара.FK_Заказ_товара_Товар
+        public ICollection<ЗаказТовара> ЗаказТовара { get; set; } // Заказ_товара.FK_Заказ_товара_Товар
 
         /// <summary>
         /// Child Оценкатовара where [Оценка_товара].[Product_ID] point to this entity (FK_Оценка_товара_Товар)
@@ -214,7 +214,7 @@ namespace Domain.Models
 
         public Товар()
         {
-            Заказтовара = new List<Заказтовара>();
+            ЗаказТовара = new List<ЗаказТовара>();
             Оценкатовара = new List<Оценкатовара>();
         }
     }
@@ -268,9 +268,9 @@ namespace Domain.Models
     }
 
     // Заказ_товара
-    public class ЗаказтовараConfiguration : IEntityTypeConfiguration<Заказтовара>
+    public class ЗаказТовараConfiguration : IEntityTypeConfiguration<ЗаказТовара>
     {
-        public void Configure(EntityTypeBuilder<Заказтовара> builder)
+        public void Configure(EntityTypeBuilder<ЗаказТовара> builder)
         {
             builder.ToTable("Заказ_товара", "dbo");
             builder.HasKey(x => new { x.OrderNumber, x.ProductId }).HasName("PK_Заказ_товара").IsClustered();
@@ -280,8 +280,8 @@ namespace Domain.Models
             builder.Property(x => x.IsDeleted).HasColumnName(@"IsDeleted").HasColumnType("bit").IsRequired();
 
             // Foreign keys
-            builder.HasOne(a => a.Заказ).WithMany(b => b.Заказтовара).HasForeignKey(c => c.OrderNumber).OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("FK_Заказ_товара_Заказ");
-            builder.HasOne(a => a.Товар).WithMany(b => b.Заказтовара).HasForeignKey(c => c.ProductId).OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("FK_Заказ_товара_Товар");
+            builder.HasOne(a => a.Заказ).WithMany(b => b.ЗаказТовара).HasForeignKey(c => c.OrderNumber).OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("FK_Заказ_товара_Заказ");
+            builder.HasOne(a => a.Товар).WithMany(b => b.ЗаказТовара).HasForeignKey(c => c.ProductId).OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("FK_Заказ_товара_Товар");
         }
     }
 

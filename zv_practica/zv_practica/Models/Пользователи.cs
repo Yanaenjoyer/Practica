@@ -23,7 +23,7 @@ public partial class Пользователи
 
     public virtual Адрес LoginNavigation { get; set; } = null!;
 
-    public virtual ICollection<Заказ> Заказs { get; } = new List<Заказ>();
+    public virtual ICollection<Заказ> Заказ { get; } = new List<Заказ>();
 
     public virtual ICollection<ОценкаТовара> ОценкаТовараs { get; } = new List<ОценкаТовара>();
 }

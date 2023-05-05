@@ -64,7 +64,7 @@ public partial class МагазинContext : DbContext
                 .HasColumnName("Order_date");
             entity.Property(e => e.Status).HasMaxLength(50);
 
-            entity.HasOne(d => d.LoginNavigation).WithMany(p => p.Заказs)
+            entity.HasOne(d => d.LoginNavigation).WithMany(p => p.Заказ)
                 .HasForeignKey(d => d.Login)
                 .HasConstraintName("FK_Заказ_Пользователи");
         });

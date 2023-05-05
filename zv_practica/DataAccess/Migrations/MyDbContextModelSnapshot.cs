@@ -110,7 +110,7 @@ namespace DataAccess.Migrations
                     b.ToTable("Заказ", "dbo");
                 });
 
-            modelBuilder.Entity("Domain.Models.Заказтовара", b =>
+            modelBuilder.Entity("Domain.Models.ЗаказТовара", b =>
                 {
                     b.Property<int>("OrderNumber")
                         .HasColumnType("int")
@@ -298,16 +298,16 @@ namespace DataAccess.Migrations
                     b.Navigation("Пользователи");
                 });
 
-            modelBuilder.Entity("Domain.Models.Заказтовара", b =>
+            modelBuilder.Entity("Domain.Models.ЗаказТовара", b =>
                 {
                     b.HasOne("Domain.Models.Заказ", "Заказ")
-                        .WithMany("Заказтовара")
+                        .WithMany("ЗаказТовара")
                         .HasForeignKey("OrderNumber")
                         .IsRequired()
                         .HasConstraintName("FK_Заказ_товара_Заказ");
 
                     b.HasOne("Domain.Models.Товар", "Товар")
-                        .WithMany("Заказтовара")
+                        .WithMany("ЗаказТовара")
                         .HasForeignKey("ProductId")
                         .IsRequired()
                         .HasConstraintName("FK_Заказ_товара_Товар");
@@ -365,7 +365,7 @@ namespace DataAccess.Migrations
 
             modelBuilder.Entity("Domain.Models.Заказ", b =>
                 {
-                    b.Navigation("Заказтовара");
+                    b.Navigation("ЗаказТовара");
                 });
 
             modelBuilder.Entity("Domain.Models.Категории", b =>
@@ -382,7 +382,7 @@ namespace DataAccess.Migrations
 
             modelBuilder.Entity("Domain.Models.Товар", b =>
                 {
-                    b.Navigation("Заказтовара");
+                    b.Navigation("ЗаказТовара");
 
                     b.Navigation("Оценкатовара");
                 });

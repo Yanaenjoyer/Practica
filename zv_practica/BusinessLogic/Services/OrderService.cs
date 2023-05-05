@@ -31,8 +31,12 @@ namespace BusinessLogic.Services
         }
         public async Task Create(Заказ model)
         {
+            if (model == null)
+            {
+                throw new ArgumentNullException(nameof(model));
+            }
             await _repositoryWrapper.Заказ.Create(model);
-            _repositoryWrapper.Save();
+            await _repositoryWrapper.Save();
         }
         public async Task Update(Заказ model)
         {

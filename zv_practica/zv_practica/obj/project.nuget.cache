@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "QU6Fq+4M/OtVRpSqVBN5A5hZS0DOTO026O72ZRHIEF2zZMPNWWUprlvm+wA+FnMEQ/KBhW/u6mZmN/Tz9rePaA==",
+  "dgSpecHash": "KjYtfjPAlsL8lHoxa53NFMyRA5wLYawfEy+MEVx64ZJO3zJFsw11fXY/jLcIh2LCRFO3SFw/I91yhspVGgFmmw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Максим\\Desktop\\zv_practica\\zv_practica\\zv_practica.csproj",
+  "projectFilePath": "C:\\Users\\Максим\\Desktop\\Task-3-4-5\\zv_practica\\zv_practica\\zv_practica.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Максим\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\Максим\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",

@@ -40,7 +40,7 @@ namespace DataAccess.Models
     {
         DbSet<Адрес> Адрес { get; set; } // Адрес
         DbSet<Заказ> Заказ { get; set; } // Заказ
-        DbSet<Заказтовара> Заказтовара { get; set; } // Заказ_товара
+        DbSet<ЗаказТовара> ЗаказТовара { get; set; } // Заказ_товара
         DbSet<Категории> Категории { get; set; } // Категории
         DbSet<Оценкатовара> Оценкатовара { get; set; } // Оценка_товара
         DbSet<Пользователи> Пользователи { get; set; } // Пользователи
@@ -112,7 +112,7 @@ namespace DataAccess.Models
 
         public DbSet<Адрес> Адрес { get; set; } // Адрес
         public DbSet<Заказ> Заказ { get; set; } // Заказ
-        public DbSet<Заказтовара> Заказтовара { get; set; } // Заказ_товара
+        public DbSet<ЗаказТовара> ЗаказТовара { get; set; } // Заказ_товара
         public DbSet<Категории> Категории { get; set; } // Категории
         public DbSet<Оценкатовара> Оценкатовара { get; set; } // Оценка_товара
         public DbSet<Пользователи> Пользователи { get; set; } // Пользователи
@@ -141,7 +141,7 @@ namespace DataAccess.Models
 
             modelBuilder.ApplyConfiguration(new АдресConfiguration());
             modelBuilder.ApplyConfiguration(new ЗаказConfiguration());
-            modelBuilder.ApplyConfiguration(new ЗаказтовараConfiguration());
+            modelBuilder.ApplyConfiguration(new ЗаказТовараConfiguration());
             modelBuilder.ApplyConfiguration(new КатегорииConfiguration());
             modelBuilder.ApplyConfiguration(new ОценкатовараConfiguration());
             modelBuilder.ApplyConfiguration(new ПользователиConfiguration());
