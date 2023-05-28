@@ -14,6 +14,7 @@ namespace Domain.Interfaces
         Task Create(Пользователи model);
         Task Update(Пользователи model);
         Task Delete(string id);
+        Task<Пользователи> Login (string email, string password );
         
     }
 }

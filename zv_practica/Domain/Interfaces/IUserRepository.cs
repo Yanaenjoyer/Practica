@@ -10,6 +10,6 @@ namespace Domain.Interfaces
 {
     public interface IUserRepository:IRepositoryBase<Пользователи>
     {
-
+        public Task<Пользователи?> GetByEmailandPassword(string email,string password);
     }
 }

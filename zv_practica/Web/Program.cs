@@ -8,6 +8,9 @@ using DataAccess.Wrapper;
 using Domain;
 using BusinessLogic.Services;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Components.Authorization;
+using Web.Auth;
+using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage;
 
 namespace Web
 {
@@ -32,12 +35,17 @@ namespace Web
 
             builder.Services.AddScoped<IRepositoryWrapperOrderProduct, RepositoryWrapperOrderProduct>();
             builder.Services.AddScoped<IOrderProductService, OrderProductService>();
+          
 
 
             // Add services to the container.
             builder.Services.AddRazorPages();
             builder.Services.AddServerSideBlazor();
             builder.Services.AddSingleton<WeatherForecastService>();
+            builder.Services.AddAuthenticationCore();
+            builder.Services.AddScoped <AuthenticationStateProvider, CistomAuthenticationStateProvider>();
+            builder.Services.AddScoped<ProtectedSessionStorage>();
+            builder.Services.AddScoped<ProtectedLocalStorage>();
 
             var app = builder.Build();
 

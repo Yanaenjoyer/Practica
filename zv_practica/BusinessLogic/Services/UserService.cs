@@ -53,6 +53,11 @@ public async Task<Пользователи> GetById(string id)
             _repositoryWrapper.Пользователи.Delete(user.First());
             _repositoryWrapper.Save();
         }
+        public async  Task<Пользователи>Login(string email,string password)
+        {
+            var user = await _repositoryWrapper.Пользователи.GetByEmailandPassword(email, password);
+            return user;
+        }
 
 
     }
