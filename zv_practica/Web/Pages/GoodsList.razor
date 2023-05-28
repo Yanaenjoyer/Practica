@@ -1,0 +1,17 @@
+﻿@page "/goods-list"
+@inject IProductService ProductService
+<h2>Список товаров</h2>
+@foreach(var r in tov)
+{
+    <h3>Товар:@r.Comment</h3>
+    <p>Товар:@r.ProductPrice    </p>
+
+}
+
+@code {
+    private List<Товар> tov = new List<Товар>();
+    protected override async Task OnInitializedAsync()
+    {
+        tov = await ProductService.GetAll();
+    }
+}
