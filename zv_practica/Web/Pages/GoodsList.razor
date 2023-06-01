@@ -1,17 +1,80 @@
-﻿@page "/goods-list"
+﻿@page "/goods/{Id:int}"
 @inject IProductService ProductService
-<h2>Список товаров</h2>
-@foreach(var r in tov)
-{
-    <h3>Товар:@r.Comment</h3>
-    <p>Цена:@r.ProductPrice    </p>
+@inject IUserService UserService
+@inject NavigationManager navManager
 
-}
+<MudContainer Class="mb-12">
+    <MudGrid>
+        <MudItem sm="12">
+            <MudPaper Class="pa-4" Elevation="25">
+                <MudTabs Elevation="0" Centered="true" Rounded="true" PanelClass="pa-6" DisableRipple="true">
+                    <MudTabPanel Text="Основные сведения" ToolTip="">
+                        <MudImage Style="width: 300px; height: auto;" Src="@Link"></MudImage>
+                        <MudText Style="font-size: 60px; font-weight: bold" Align="Align.Left">@good.Comment</MudText>
+                        <MudText Style="font-size: 40px;" Align="Align.Left">@good.ProductPrice руб</MudText>
+
+                    </MudTabPanel>
+
+                    <MudTabPanel Text="Дополнительные сведения" ToolTip="">
+                        <MudImage Style="width: 300px; height: auto;" Src="@Link"></MudImage>
+                        <MudText Style="font-size: 40px;" Align="Align.Left">@good.ProductLenght длина(см)</MudText>
+                        <MudText Style="font-size: 40px;" Align="Align.Left">@good.ProductWidth ширина(см)</MudText>
+                        <MudText Style="font-size: 40px;" Align="Align.Left">@good.ProductWeight масса(см)</MudText>
+                         
+                    </MudTabPanel>
+                
+                </MudTabs>
+            </MudPaper>
+        </MudItem>
+
+    </MudGrid>
+
+</MudContainer>
+
 
 @code {
-    private List<Товар> tov = new List<Товар>();
+    [Parameter]
+    public int Id { get; set; }
+
+    public class CommentToWrite
+    {
+        public string username { get; set; }
+        public double rate { get; set; }
+        public string review { get; set; }
+    }
+
+    private string Link;
+    private Товар good = new Товар();
+    private List
+    <CommentToWrite> comments = new List<CommentToWrite>();
+    private List<string> Description = new List<string>();
+
     protected override async Task OnInitializedAsync()
     {
-        tov = await ProductService.GetAll();
+        Link = RandomImage();
+        try
+        {
+            good = await ProductService.GetByLogin(Id);
+        }
+        catch
+        {
+            navManager.NavigateTo("/", true);
+        }
+       
     }
+    protected string RandomImage()
+    {
+        var links = new List<string>() { "https://i.ebayimg.com/00/s/MTA4MFgxMDgw/z/oWAAAOSw31NhHNu4/$_57.JPG?set_id=8800005007"
+        , "https://ru.myanimeshelf.com/eva2/upload/09baeb9fa8dbe2a0a8dcdbc979700649/6marisa4.jpg"
+        };
+
+        return links[new Random().Next(0, links.Count)];
+    }
+    protected string WriteDesc(string r)
+    {
+        return "   " + r.Replace(";", "");
+    }
+
+   
+
 }

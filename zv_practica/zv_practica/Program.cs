@@ -32,7 +32,10 @@ namespace zv_practica
 
             builder.Services.AddScoped<IRepositoryWrapperOrderProduct, RepositoryWrapperOrderProduct>();
             builder.Services.AddScoped<IOrderProductService, OrderProductService>();
-            
+
+            builder.Services.AddScoped<IRepositoryWrapperGradeProduct, RepositoryWrapperGradeProduct>();
+            builder.Services.AddScoped<IGradeProductService, GradeProductService>();
+
 
 
 

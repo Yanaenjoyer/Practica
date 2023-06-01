@@ -73,6 +73,75 @@
              <param name="model">Пользователь</param>
              <returns></returns>
         </member>
+        <member name="M:zv_practica.Controllers.GradeProduct.Add(zv_practica.Contracts.CreateUserRequest)">
+             <summary>
+             Создание нового пользователя
+             </summary>
+             <remarks>
+             Пример запроса:
+            
+             POST /Todo
+             {
+             "Login" : "A4Tech Bloody B188",
+             "password" : "!Pa$$word123@",
+             "Surname" : "Иванов",
+             "Name" : "Иван",
+             "Lastname" : "Иванович"
+             "Birthday":"2000-01-01"
+             "IsDeleted":"True"
+             "IsAdmin":"False"
+             }
+            
+             </remarks>
+             <param name="model">Пользователь</param>
+             <returns></returns>
+        </member>
+        <member name="M:zv_practica.Controllers.GradeProduct.Update(zv_practica.Contracts.GetUSerResponse)">
+             <summary>
+             Изменение нового пользователя
+             </summary>
+             <remarks>
+             Пример запроса:
+            
+             POST /Todo
+             {
+             "Login" : "A4Tech Bloody B188",
+             "password" : "!Pa$$word123@",
+             "Surname" : "Иванов",
+             "Name" : "Иван",
+             "Lastname" : "Иванович"
+             "Birthday":"2000-01-01"
+             "IsDeleted":"True"
+             "IsAdmin":"False"
+             }
+            
+             </remarks>
+             <param name="model">Пользователь</param>
+             <returns></returns>
+        </member>
+        <member name="M:zv_practica.Controllers.GradeProduct.Delete(System.String)">
+             <summary>
+             Удаление пользователя
+             </summary>
+             <remarks>
+             Пример запроса:
+            
+             POST /Todo
+             {
+             "Login" : "A4Tech Bloody B188",
+             "password" : "!Pa$$word123@",
+             "Surname" : "Иванов",
+             "Name" : "Иван",
+             "Lastname" : "Иванович"
+             "Birthday":"2000-01-01"
+             "IsDeleted":"True"
+             "IsAdmin":"False"
+             }
+            
+             </remarks>
+             <param name="model">Пользователь</param>
+             <returns></returns>
+        </member>
         <member name="M:zv_practica.Controllers.OrderController.Add(zv_practica.Contracts.CreateOrderRequest)">
              <summary>
              Создание нового закааз
