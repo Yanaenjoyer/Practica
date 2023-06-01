@@ -1,40 +1,113 @@
-﻿@inherits LayoutComponentBase
-@using Web.Auth
-@inject AuthenticationStateProvider authProvider
+﻿@using Web.Auth;
+
+@inherits LayoutComponentBase
+
+@inject AuthenticationStateProvider authStateProvider;
 @inject NavigationManager navManager
+@inject IDialogService _dialogService
 
 <PageTitle>Web</PageTitle>
 
-<div class="page">
-    <div class="sidebar">
-        <NavMenu />
-    </div>
+<MudThemeProvider IsDarkMode="true" />
+<MudDialogProvider />
+<MudSnackbarProvider />
 
-    <main>
-        <div class="top-row px-4">
-            <a href="https://docs.microsoft.com/aspnet/" target="_blank">About</a>
-            <AuthorizeView>
-                <Authorized>
-                    <a @onclick = "Logout" href="javascript:void(0)">Logout</a>
-                </Authorized>
-                <NotAuthorized>
-                    <a href="/login">Login</a>
-                </NotAuthorized>
-            </AuthorizeView>
-        </div>
+<MudLayout>
+    <MudAppBar Elevation="0">
+        <MudIconButton Icon="@Icons.Material.Filled.Menu" Edge="Edge.Start" OnClick="@((x) => DrawerToggle())" />
 
-        <article class="content px-4">
+        <MudSpacer />
+
+        <AuthorizeView>
+            <Authorized>
+                <MudMenu AnchorOrigin="Origin.BottomRight" Class="ml-3" LockScroll="true" TransformOrigin="Origin.TopRight">
+                    <ActivatorContent>
+                        <MudAvatar Image="https://avatars.yandex.net/get-music-content/4382806/47d40477.a.14176505-1/m1000x1000?webp=false" />
+                    </ActivatorContent>
+                    <ChildContent>
+                        <div class="py-4" style="min-width: 220px">
+                            <MudText Class="px-6 pb-2"
+                                     Typo="Typo.body1" Align="Align.Left">
+                                @context.User.Identity.Name
+                            </MudText>
+                            <MudDivider Class="my-2" />
+                            <MudMenuItem>
+                                <a href="/user">
+                                    <div class="d-flex">
+                                        <MudIcon Class="mx-2" Icon="@Icons.Material.Filled.Person" />
+                                        <MudText>Профиль</MudText>
+                                    </div>
+                                </a>
+                            </MudMenuItem>
+                            <MudMenuItem>
+                                <a href="/" @onclick="Logout">
+                                    <div class="d-flex">
+                                        <MudIcon Class="mx-2" Icon="@Icons.Material.Filled.Logout" />
+                                        <MudText>Выйти</MudText>
+                                    </div>
+                                </a>
+                            </MudMenuItem>
+                        </div>
+
+                    </ChildContent>
+                </MudMenu>
+            </Authorized>
+            <NotAuthorized>
+                <MudLink Class="ml-3" Color="Color.Surface" Href="/register" target="_blank">Зарегистрироваться</MudLink>
+                <MudLink Class="ml-3" Color="Color.Surface" Href="/login" target="_blank">Войти</MudLink>
+            </NotAuthorized>
+        </AuthorizeView>
+
+    </MudAppBar>
+
+    <MudDrawer Elevation="2" @bind-Open="_drawerOpen">
+        <MudNavMenu>
+
+            <div class="ml-6 my-3">
+                <MudText Typo="Typo.caption" Align="Align.Center">
+                    Меню
+                </MudText>
+            </div>
+            <MudNavLink Href="/" Icon="@Icons.Material.Filled.Home" Match="NavLinkMatch.All">
+                Главная
+            </MudNavLink>
+                   
+                    <MudNavLink Href="goods-list" Icon="@Icons.Material.Filled.Shop" Match="NavLinkMatch.All">
+                        Список товаров
+                    </MudNavLink>
+               
+            
+           
+                    <MudNavLink Href="users-list" Icon="@Icons.Material.Filled.Person" Match="NavLinkMatch.All">
+                        Список пользователей
+                    </MudNavLink>
+                
+
+        </MudNavMenu>
+
+    </MudDrawer>
+
+    <MudMainContent>
+        <MudContainer Class="mb-16 mt-4">
             @Body
-        </article>
-    </main>
-</div>
+        </MudContainer>
+    </MudMainContent>
+    
+
+</MudLayout>
+
 @code
 {
+    bool _drawerOpen = true;
+    void DrawerToggle()
+    {
+        _drawerOpen = !_drawerOpen;
+    }
     private async Task Logout()
     {
-        var customAuthStateProvider = (CistomAuthenticationStateProvider)authProvider;
+        var customAuthStateProvider = (CistomAuthenticationStateProvider)authStateProvider;
         await customAuthStateProvider.UpdateAuthenticationStateAsync(null);
-        navManager.NavigateTo("/", true);       
-
+        navManager.NavigateTo("/", true);
     }
+   
 }

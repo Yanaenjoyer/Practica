@@ -1,0 +1,30 @@
+﻿@page "/user"
+
+@using Web.Auth;
+@inject IJSRuntime js
+@inject IUserService UserService
+@inject AuthenticationStateProvider authStateProvider
+
+<h1>Ваш профиль</h1>
+    <AuthorizeView>
+        <Authorized>
+            <h5>Логин на сайте: @user.Login</h5>
+            <h5>Фамилия: @user.Surname</h5>
+            <h5>Имя: @user.Name</h5>
+            
+           
+            <hr />
+        </Authorized>
+    </AuthorizeView>
+
+@code {
+    private Пользователи user = new Пользователи();
+    [CascadingParameter]
+    private Task<AuthenticationState> authenticationState { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        user = await UserService.GetById(CurrentUser.Id);
+    }
+}
+

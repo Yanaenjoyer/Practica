@@ -1,40 +1,56 @@
 ﻿@page "/"
-@using Web.Auth
+@using Web.Auth;
 @inject IJSRuntime js
 @inject IUserService UserService
-    
 
 <PageTitle>Index</PageTitle>
 
-<h1>Hello, world!</h1>
-
-Welcome to your new app.
-
-<SurveyPrompt Title="How is Blazor working for you?" />
-
-
 <AuthorizeView>
     <Authorized>
-        <h1>Welcome,@context.User.Identity.Name!</h1>
+        <div>
+            <style>
+                div {
+                    text-align: center;
+                }
+            </style>
+            <h1>Добро пожаловать в FumoStore, @context.User.Identity.Name!</h1>
+        </div>
     </Authorized>
     <NotAuthorized>
-        <h1>Hello young boy,mmm</h1>
+        <div>
+            <style>
+                div {
+                    text-align: center;
+                }
+            </style>
+            <h1>Добро пожаловать в FumoStore</h1>
+        </div>
     </NotAuthorized>
 </AuthorizeView>
-<AuthorizeView>
-    <Authorized>
-        <br /><br />
-        <button class="btn btn-outline-primary" @onclick="DisplayGreetingAlret">Greeting</button>
-    </Authorized>
-</AuthorizeView>
-@code
-{
+@*
+<MudText Style="font-size:x-large; font-family:sans-serif; text-align: center">У нас много </MudText>*@
+
+<MudGrid Style="align-content: center" Spacing="10">
+    <MudItem>
+        <MudText Style="font-size:x-large; font-family:sans-serif; text-align: center">Аянами Рей</MudText>
+        <MudImage Style="width: 500px; max-height:auto" Src="https://i.ebayimg.com/00/s/MTAwMFgxMDAw/z/UMAAAOSw~YNjXab9/$_57.JPG?set_id=880000500F" />
+    </MudItem>
+
+    <MudItem>
+        <MudText Style="font-size:x-large; font-family:sans-serif; text-align: center">Мариса</MudText>
+        <MudImage Style="width: 500px; max-height:auto" Src="https://i.ebayimg.com/00/s/MTA4MFgxMDgw/z/oWAAAOSw31NhHNu4/$_57.JPG?set_id=8800005007" />
+    </MudItem>
+</MudGrid>
+
+
+@code {
     [CascadingParameter]
     private Task<AuthenticationState> authenticationState { get; set; }
-    private async Task DisplayGreetingAlret()
+
+    private async Task DisplayGreetingAlert()
     {
         var authState = await authenticationState;
-        var message = $"Hello,{authState.User.Identity.Name}";
+        var message = $"Hello, {authState.User.Identity.Name}";
         await js.InvokeVoidAsync("alert", message);
     }
 }

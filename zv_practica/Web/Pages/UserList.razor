@@ -1,0 +1,18 @@
+﻿@page "/users-list"
+@attribute [Authorize(Roles = "Administrator")]
+@inject IUserService UsertService
+<h2>Список товаров</h2>
+@foreach(var r in tov)
+{
+    <h3>Логин:@r.Login</h3>
+    <p>Имя:@r.Name    </p>
+
+}
+
+@code {
+    private List<Пользователи> tov = new List<Пользователи>();
+    protected override async Task OnInitializedAsync()
+    {
+        tov = await UsertService.GetAll();
+    }
+}

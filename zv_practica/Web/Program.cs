@@ -11,6 +11,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Components.Authorization;
 using Web.Auth;
 using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage;
+using MudBlazor.Services;
 
 namespace Web
 {
@@ -46,6 +47,9 @@ namespace Web
             builder.Services.AddScoped <AuthenticationStateProvider, CistomAuthenticationStateProvider>();
             builder.Services.AddScoped<ProtectedSessionStorage>();
             builder.Services.AddScoped<ProtectedLocalStorage>();
+
+            builder.Services.AddMudServices();
+           
 
             var app = builder.Build();
 
