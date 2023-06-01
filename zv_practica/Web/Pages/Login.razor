@@ -12,14 +12,14 @@
         </div>
         <div class="mb-3">
             <label>Login</label>
-            <input @bind="model.Email" type="email"class="form-control" placeholder="Login"/>
+            <input @bind="model.Login" type="login"class="form-control" placeholder="Login"/>
         </div>
         <div class="mb-3">
             <label>Password</label>
             <input @bind="model.Password" type="password" class="form-control" placeholder="Password" />
         </div>
         <div class="mb-3 d-grid gap-2">
-            <button @oneclick ="Autenticate" class="btn btn-primary">Login</button>
+            <button @onclick="Authenticate" class="btn btn-primary">Login</button>
         </div>
     </div>
 
@@ -34,7 +34,7 @@
 @code {
     private class Model
     {
-        public string Email{ get; set; }
+        public string Login{ get; set; }
         public string Password { get; set; }
     }
 
@@ -44,7 +44,7 @@
 
     private async Task Authenticate()
     {
-        var userAccount = await UserService.Login(model.Email, model.Password);
+        var userAccount = await UserService.Login(model.Login, model.Password);
         if(userAccount == null)
         {
              await js.InvokeVoidAsync("alert","Invalid hasan");
@@ -56,7 +56,7 @@
     new UserSession
     {
         Id = userAccount.Login.ToString(),
-        Email = userAccount.Name,
+       Email = userAccount.Name,
         FirstName = userAccount.Surname,
         Role = "user"
     });

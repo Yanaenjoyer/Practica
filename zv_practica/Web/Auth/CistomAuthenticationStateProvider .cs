@@ -21,25 +21,48 @@ namespace Web.Auth
         {
             try
             {
-                var userSessionStorageResult = await _sessionStorage.GetAsync<UserSession>("UserSession");
+               
+                var userSessionStorageResult = await _localStorage.GetAsync<UserSession>("LocalUserSession");
                 var userSession = userSessionStorageResult.Success ? userSessionStorageResult.Value : null;
                 if (userSession == null)
                 {
                     return await Task.FromResult(new AuthenticationState(_anonymous));
                 }
-                var claimsPrincipal = new ClaimsPrincipal(new ClaimsIdentity(new List<Claim>
-                {
-                    new Claim(ClaimTypes.Sid,userSession.Id),
-                     new Claim(ClaimTypes.Name,userSession.FirstName),
-                      new Claim(ClaimTypes.Email,userSession.Email),
-                       new Claim(ClaimTypes.Role,userSession.Role)
+                CurrentUser.Id = userSessionStorageResult.Value.Id;
+                var claimsPrincipal = new ClaimsPrincipal(new ClaimsIdentity(new List<Claim> {
+                new Claim(ClaimTypes.Sid,userSession.Id),
+                new Claim(ClaimTypes.Name,userSession.FirstName),
+                new Claim(ClaimTypes.Email,userSession.Email),
+                new Claim(ClaimTypes.Role,userSession.Role),
+                }, "CustomAuth"));
 
-                }, "CistomAuth"));
                 return await Task.FromResult(new AuthenticationState(claimsPrincipal));
             }
             catch
             {
-                return await Task.FromResult(new AuthenticationState(_anonymous));
+                try
+                {
+                    var userSessionStorageResult = await _sessionStorage.GetAsync<UserSession>("UserSession");
+                    var userSession = userSessionStorageResult.Success ? userSessionStorageResult.Value : null;
+
+                    if (userSession == null)
+                    {
+                        return await Task.FromResult(new AuthenticationState(_anonymous));
+                    }
+                    CurrentUser.Id = userSessionStorageResult.Value.Id;
+                    var claimsPrincipal = new ClaimsPrincipal(new ClaimsIdentity(new List<Claim> {
+                    new Claim(ClaimTypes.Sid,userSession.Id),
+                    new Claim(ClaimTypes.Name,userSession.FirstName),
+                    new Claim(ClaimTypes.Email,userSession.Email),
+                    new Claim(ClaimTypes.Role,userSession.Role),
+                }, "CustomAuth"));
+
+                    return await Task.FromResult(new AuthenticationState(claimsPrincipal));
+                }
+                catch
+                {
+                    return await Task.FromResult(new AuthenticationState(_anonymous));
+                }
             }
         }
         public async Task UpdateAuthenticationStateAsync ( UserSession userSession )
@@ -47,6 +70,7 @@ namespace Web.Auth
             ClaimsPrincipal claimsPrincipal;
             if (userSession != null)
             {
+                await _localStorage.SetAsync("LocalUserSession", userSession);
                 await _sessionStorage.SetAsync("UserSession", userSession);
                 claimsPrincipal = new ClaimsPrincipal(new ClaimsIdentity(new List<Claim>
                 {
@@ -60,6 +84,8 @@ namespace Web.Auth
             }
             else
             {
+
+                await _localStorage.DeleteAsync("LocalUserSession");
                 await _sessionStorage.DeleteAsync("UserSession");
                 claimsPrincipal = _anonymous;
             }

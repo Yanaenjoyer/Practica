@@ -1,0 +1,80 @@
+﻿@page "/register"
+
+@using Web.Auth;
+@inject IUserService UserService
+@inject IJSRuntime js
+@inject AuthenticationStateProvider authStateProvider
+@inject NavigationManager navManager
+
+<div class="row">
+    <div class="col-1g-4 offset-1g-4 pt-4 pb-4 border">
+        :       <div class="mb-3 text-center">
+            <h3>Register</h3>
+        </div>
+        <div class="mb-3">
+            <label>Login</label>
+            <input @bind="user.Login" type="text" class="form-control" placeholder="Login" />
+        </div>
+        <div class="mb-3">
+            <label>Firstname</label>
+            <input @bind="user.Surname" type="text" class="form-control" placeholder="Firstname" />
+        </div>
+        <div class="mb-3">
+            <label>Lastname</label>
+            <input @bind="user.Name" type="text" class="form-control" placeholder="Lastname" />
+        </div>
+        <div class="mb-3">
+            <label>Birthday</label>
+            <input @bind="user.Birthday" type="text" class="form-control" placeholder="Your Birthday" />
+        </div>
+        
+        <div class="mb-3">
+            <label>Password</label>
+            <input @bind="user.Password" type="password" class="form-control" placeholder="Password" />
+        </div>
+        <div class="mb-3">
+            <label>Repeat password</label>
+            <input @bind="CheckPassword" type="password" class="form-control" placeholder="Repeat password" />
+        </div>
+        <div class="mb-3 d-grid gap-2">
+            <button @onclick="AddUser" class="btn btn-primary">Register</button>
+        </div>
+    </div>
+</div>
+
+@code {
+
+    private Пользователи user = new Пользователи();
+    private string CheckPassword;
+
+    private async Task AddUser()
+    {
+        user.IsDeleted = false;
+        user.IsAdmin = false;
+        user.Lastname = user.Surname;
+        if (user.Password != CheckPassword)
+        {
+            var message = $"Пароли не совпадают";
+            await js.InvokeVoidAsync("alert", message);
+        }
+        else
+        {
+            user.Login = new Random().Next(int.MaxValue).ToString();
+
+            try
+            {
+                await UserService.Create(user);
+                navManager.NavigateTo("/", true);
+            }
+            catch(Exception ex)
+            {
+                await js.InvokeVoidAsync("alert", "Данные заполни по-лучше"+user.Login + user.Name+user.Lastname+user.Birthday+user.Password);
+                
+                
+            }
+            
+        }
+
+    }
+}
+
