@@ -36,18 +36,11 @@
     [Parameter]
     public int Id { get; set; }
 
-    public class CommentToWrite
-    {
-        public string username { get; set; }
-        public double rate { get; set; }
-        public string review { get; set; }
-    }
+  
 
     private string Link;
     private Товар good = new Товар();
-    private List
-    <CommentToWrite> comments = new List<CommentToWrite>();
-    private List<string> Description = new List<string>();
+    private Оценкатовара gr = new Оценкатовара();
 
     protected override async Task OnInitializedAsync()
     {
